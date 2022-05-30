@@ -1,43 +1,51 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import quotes from './json/quotes.json'
+import QuoteBox from './components/QuoteBox'
+
+const arrayColor = [
+  '#8001B8',
+  '#44A383',
+  '#FD4AB5',
+  '#96459F',
+  '#4B5362',
+  '#EA077B',
+  '#876C4B'
+]
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
+  const createNumberRandom = array => {
+    return Math.floor(Math.random() * array.length)
+  }
+
+  const getPhraseRandom = array => {
+    const i = createNumberRandom(array)
+    return array[i]
+  }
+
+
+  const [quoteRandom, setQuoteRandom] = useState(getPhraseRandom(quotes))
+  const [colorRandom, setColorRandom] = useState(getPhraseRandom(arrayColor))
+
+  const clickButton = () => {
+    setQuoteRandom(getPhraseRandom(quotes))
+    setColorRandom(getPhraseRandom(arrayColor))
+  }
+
+  const appStyle = {
+    backgroundColor: colorRandom
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div style={appStyle} className="App">
+      <QuoteBox
+        quoteRandom={quoteRandom}
+        colorRandom={colorRandom}
+        clickButton={clickButton}
+      />
     </div>
   )
 }

@@ -11,7 +11,8 @@ const arrayColor = [
   '#96459F',
   '#4B5362',
   '#EA077B',
-  '#876C4B'
+  '#876C4B',
+  '#377933'
 ]
 
 function App() {

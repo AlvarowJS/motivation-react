@@ -1,13 +1,61 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0; 
+}
+.App {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.QuoteBox {
+  background-color: white;
+  padding: 30px; 
+  width: min(400px, 100%);
+  border-radius: 5px;
+  position: relative;
+  
+}
+.QuoteBox_Phrase{
+  display: flex;
+
+}
+.QuoteBox_Phrase-Symbol{  
+  quotes: "\201C";
+}
+.QuoteBox_Phrase-Symbol::before{
+  
+  font-size: 120px;
+}
+.QuoteBox_Phrase-Symbol::after{
+  content: no-close-quote;
+}
+.QuoteBox_Phrase-Quote{
+  margin-top: 30px;
+}
+.QuoteBox_Author{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.QuoteBox_btn{
+  display: block;
+  font-size: 17px;
+  width: 30px;
+  /*proporcion entre alto y ancho*/
+  aspect-ratio: 1; 
+  border-radius: 50%;
+  border: none;
+  color: white;
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 0 #000a;    
 }
+
+.QuoteBox_btn:active{
+  box-shadow: 0 0 0 0 #000a;
+  transition: box-shadow 200ms ease;
+}
+
